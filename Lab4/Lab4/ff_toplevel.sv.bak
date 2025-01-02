@@ -1,0 +1,15 @@
+module ff_toplevel(
+	input logic CLK, D,
+	output logic [1:0] LEDR 
+	
+)
+
+
+
+
+
+
+debouncer db( .A_noisy(clk), .CLK50M(clk50), .A(debouncer) );
+
+    
+d_ff dff_inst ( .D(D),.CLK(debouncer),.Q(LEDR[0]),.Qn(LEDR[1]) );

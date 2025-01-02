@@ -1,0 +1,27 @@
+module PP4 (
+    input logic [3:0] A,          // 4-bit multiplicand
+    input logic B,                // Single-bit multiplier
+    input logic [3:0] partial_in, // 4-bit partial product input
+    input logic Cin,              // Carry-in for the addition
+    output logic [3:0] partial_out, // 4-bit partial product output
+    output logic Cout             // Carry-out for the addition
+);
+
+    // Intermediate signals
+    logic [3:0] partial_product;
+    logic overflow;
+
+    // Calculate partial product: AND each bit of A with the multiplier bit B
+    assign partial_product = A & {4{B}};
+
+    // Instantiate the 4-bit adder
+    adder4 add_inst (
+        .A(partial_product),
+        .B(partial_in),
+        .Cin(Cin),
+        .S(partial_out),
+        .C4(Cout),
+        .V(overflow)
+    );
+
+endmodule

@@ -1,0 +1,14 @@
+module jk_ff(
+	input logic J, K, CLK, 
+	output logic Q, Qc
+);
+
+
+
+assign A1 = J & Qc;
+assign A2 = ~K & Q;
+
+
+
+
+endmodule

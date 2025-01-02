@@ -1,0 +1,8 @@
+module warmup(
+	input logic A,B,C
+	output logic Z
+)
+
+logic WtoE
+C1 first(.C(A), .D(B), .W(WtoE));
+C2 second(.E(WtoE), .F(C), .X(Z));
